@@ -1,0 +1,226 @@
+{
+ "year": 2026,
+ "channel": {
+  "name": "Cover to Cover",
+  "url": "https://www.youtube.com/@C2CAudiobooks"
+ },
+ "note": "video: a YouTube video id, set only once that reading is public; until then the card links to the channel.",
+ "books": [
+  {
+   "day": 1,
+   "slug": "gift-of-the-magi",
+   "title": "The Gift of the Magi",
+   "author": "O. Henry",
+   "year": 1905,
+   "length": "14 min",
+   "video": null
+  },
+  {
+   "day": 2,
+   "slug": "time-machine",
+   "title": "The Time Machine",
+   "author": "H. G. Wells",
+   "year": 1895,
+   "length": "3 h 8 min",
+   "video": null
+  },
+  {
+   "day": 3,
+   "slug": "elves-shoemaker",
+   "title": "The Elves and the Shoemaker",
+   "author": "The Brothers Grimm",
+   "year": 1812,
+   "length": "about 5 min",
+   "video": null
+  },
+  {
+   "day": 4,
+   "slug": "poison-belt",
+   "title": "The Poison Belt",
+   "author": "Arthur Conan Doyle",
+   "year": 1913,
+   "length": "2 h 49 min",
+   "video": null
+  },
+  {
+   "day": 5,
+   "slug": "selfish-giant",
+   "title": "The Selfish Giant",
+   "author": "Oscar Wilde",
+   "year": 1888,
+   "length": "about 11 min",
+   "video": null
+  },
+  {
+   "day": 6,
+   "slug": "kidnapped-santa",
+   "title": "A Kidnapped Santa Claus",
+   "author": "L. Frank Baum",
+   "year": 1904,
+   "length": "about 25 min",
+   "video": null
+  },
+  {
+   "day": 7,
+   "slug": "invisible-man",
+   "title": "The Invisible Man",
+   "author": "H. G. Wells",
+   "year": 1897,
+   "length": "5 h 7 min",
+   "video": null
+  },
+  {
+   "day": 8,
+   "slug": "canterville-ghost",
+   "title": "The Canterville Ghost",
+   "author": "Oscar Wilde",
+   "year": 1887,
+   "length": "about 1 h 10 min",
+   "video": null
+  },
+  {
+   "day": 9,
+   "slug": "christmas-every-day",
+   "title": "Christmas Every Day",
+   "author": "W. D. Howells",
+   "year": 1892,
+   "length": "about 18 min",
+   "video": null
+  },
+  {
+   "day": 10,
+   "slug": "happy-prince",
+   "title": "The Happy Prince",
+   "author": "Oscar Wilde",
+   "year": 1888,
+   "length": "about 22 min",
+   "video": null
+  },
+  {
+   "day": 11,
+   "slug": "tailor-of-gloucester",
+   "title": "The Tailor of Gloucester",
+   "author": "Beatrix Potter",
+   "year": 1903,
+   "length": "about 18 min",
+   "video": null
+  },
+  {
+   "day": 12,
+   "slug": "fir-tree",
+   "title": "The Fir-Tree",
+   "author": "Hans Christian Andersen",
+   "year": 1844,
+   "length": "about 21 min",
+   "video": null
+  },
+  {
+   "day": 13,
+   "slug": "goblins-sexton",
+   "title": "The Story of the Goblins Who Stole a Sexton",
+   "author": "Charles Dickens",
+   "year": 1836,
+   "length": "about 27 min",
+   "video": null
+  },
+  {
+   "day": 14,
+   "slug": "signal-man",
+   "title": "The Signal-Man",
+   "author": "Charles Dickens",
+   "year": 1866,
+   "length": "about 33 min",
+   "video": null
+  },
+  {
+   "day": 15,
+   "slug": "little-match-girl",
+   "title": "The Little Match Girl",
+   "author": "Hans Christian Andersen",
+   "year": 1845,
+   "length": "about 6 min",
+   "video": null
+  },
+  {
+   "day": 16,
+   "slug": "blue-carbuncle",
+   "title": "The Adventure of the Blue Carbuncle",
+   "author": "Arthur Conan Doyle",
+   "year": 1892,
+   "length": "about 50 min",
+   "video": null
+  },
+  {
+   "day": 17,
+   "slug": "burglars-christmas",
+   "title": "The Burglar's Christmas",
+   "author": "Willa Cather",
+   "year": 1896,
+   "length": "about 27 min",
+   "video": null
+  },
+  {
+   "day": 18,
+   "slug": "other-wise-man",
+   "title": "The Story of the Other Wise Man",
+   "author": "Henry van Dyke",
+   "year": 1895,
+   "length": "about 56 min",
+   "video": null
+  },
+  {
+   "day": 19,
+   "slug": "told-after-supper",
+   "title": "Told After Supper",
+   "author": "Jerome K. Jerome",
+   "year": 1891,
+   "length": "about 1 h 8 min",
+   "video": null
+  },
+  {
+   "day": 20,
+   "slug": "santa-claus",
+   "title": "The Life and Adventures of Santa Claus",
+   "author": "L. Frank Baum",
+   "year": 1902,
+   "length": "about 3 h 10 min",
+   "video": null
+  },
+  {
+   "day": 21,
+   "slug": "snow-queen",
+   "title": "The Snow Queen",
+   "author": "Hans Christian Andersen",
+   "year": 1844,
+   "length": "about 1 h 20 min",
+   "video": null
+  },
+  {
+   "day": 22,
+   "slug": "chimes",
+   "title": "The Chimes",
+   "author": "Charles Dickens",
+   "year": 1844,
+   "length": "about 3 h 15 min",
+   "video": null
+  },
+  {
+   "day": 23,
+   "slug": "st-nicholas",
+   "title": "A Visit from St. Nicholas",
+   "author": "Clement C. Moore",
+   "year": 1823,
+   "length": "about 4 min",
+   "video": null
+  },
+  {
+   "day": 24,
+   "slug": "christmas-carol",
+   "title": "A Christmas Carol",
+   "author": "Charles Dickens",
+   "year": 1843,
+   "length": "2 h 44 min",
+   "video": null
+  }
+ ]
+}

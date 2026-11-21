@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Advent Village 2026 · Cover to Cover</title>
+<meta name="description" content="A snowy village with one house for each December day, each holding a book from the Cover to Cover channel.">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="The advent village. Drag to look around, tap a house to open its card."></canvas>
+
+<div id="loading" role="status">
+  <h1>Advent Village 2026</h1>
+  <p>Lighting the lamps</p>
+  <div class="bar"><div id="bar"></div></div>
+</div>
+
+<header id="head">
+  <h1>Advent Village 2026</h1>
+  <p id="count"></p>
+</header>
+
+<p id="hint">Drag to look around · tap a house</p>
+
+<section id="card" hidden aria-live="polite">
+  <p id="card-day" class="kicker"></p>
+  <h2 id="card-title"></h2>
+  <p id="card-author"></p>
+  <p id="card-length"></p>
+  <a id="card-link" class="button" target="_blank" rel="noopener" hidden></a>
+</section>
+
+<button id="back" type="button" hidden>Back to the village</button>
+
+<noscript><p class="nojs">This page needs JavaScript to show the village.</p></noscript>
+<script type="module" src="main.js"></script>
+</body>
+</html>
