@@ -6,7 +6,7 @@ The doors follow the visitor's local date. In December 2026, the houses up to to
 
 ## Preview locally
 
-From the repository root, run `python3 -m http.server`, then open `http://localhost:8000/2026/` in a browser. Add `?day=N` to the address to preview a day, for example `/2026/?day=12` opens doors 1 to 12. `?day=0` closes all doors and `?day=24` opens all of them.
+From the repository root, run `python3 -m http.server`, then open `http://localhost:8000/2026/` in a browser. Add `?day=N` to the address to preview a day (this only works on a local copy; the live site ignores it), for example `/2026/?day=12` opens doors 1 to 12. `?day=0` closes all doors and `?day=24` opens all of them.
 
 ## Add a reading
 

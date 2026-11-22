@@ -46,7 +46,9 @@ async function main() {
   const [{ days, props: PROPS }, stats, booksData] = await Promise.all([getJson('data/days.json'), getJson('data/stats.json'), getJson('data/books.json')]);
   const books = new Map(booksData.books.map((b) => [b.day, b]));
 
-  const dayParam = new URLSearchParams(location.search).get('day'), now = new Date();
+  // ?day=N previews (including 25/26 for the pop-ups) only work on a local copy, so visitors can't open doors early
+  const local = location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  const dayParam = local ? new URLSearchParams(location.search).get('day') : null, now = new Date();
   const opened = openedDoors(now, dayParam);
   const christmas = dayParam === '25' || (!dayParam && now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() === 25);
   const afterwards = (dayParam && +dayParam > 25) || (!dayParam && (now.getFullYear() > 2026 || (now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() > 25)));
