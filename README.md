@@ -15,3 +15,10 @@ Each book is an entry in `2026/data/books.json`. When a reading is public on You
 ## Analytics
 
 Google Analytics loads only after a visitor clicks Accept on the cookie banner. To switch it on, put the GA4 measurement ID (`G-…`) in `GA_ID` near the end of `2026/index.html`. While it is empty there is no banner and nothing from Google loads. To fetch the numbers, run `node tools/ga_report.mjs` (with no settings it prints the one-time setup steps). The service-account key stays outside the repo.
+
+## Notes for editing the village
+
+- The paths are generated in `2026/main.js` (a ring round the tree, then each door joined to the nearest path). The `lanes` and `door_path` entries in `days.json` are no longer used: `door_path` does not follow the way the houses face.
+- A house's front door is on the model's +z side, turned by `rot_y`. Models whose door is on another side are listed in `MODEL_TURN` in `main.js` (today: time-machine and goblins-sexton). Check a new model by rendering it from four sides before placing it.
+- Every extra point light costs every pixel on screen, so the village uses one shared door light and draws its shadows once. Add glow with emissive materials or the soft light pools, not more lights.
+- Preview the end of Advent with `?day=25` (Christmas pop-up with confetti) and `?day=26` (the "see you next December" pop-up).
