@@ -1,2 +1,4 @@
 .claude/
 .DS_Store
+gdpr-audit-reports/
+*ga-key*.json

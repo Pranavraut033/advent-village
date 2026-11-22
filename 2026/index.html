@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Advent Village 2026 · Cover to Cover</title>
-<meta name="description" content="A snowy village with one house for each December day, each holding a book from the Cover to Cover channel.">
+<meta name="description" content="An audiobook advent calendar: a snowy village with one house for each December day, each opening a classic story read aloud by the Cover to Cover channel.">
+<meta name="theme-color" content="#050916">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cover to Cover">
+<meta property="og:title" content="Advent Village 2026 · Cover to Cover">
+<meta property="og:description" content="24 houses, 24 classic stories read aloud. A new door opens every day of December.">
+<meta property="og:url" content="https://pranavraut033.github.io/advent-village/2026/">
+<meta property="og:image" content="https://pranavraut033.github.io/advent-village/2026/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050916'/%3E%3Cpath d='M16 4l3.4 7.6 8.2.8-6.2 5.5 1.8 8.1L16 21.8 8.8 26l1.8-8.1-6.2-5.5 8.2-.8z' fill='%23f2c46d'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">
 {
@@ -20,12 +32,14 @@
 
 <div id="loading" role="status">
   <h1>Advent Village 2026</h1>
-  <p>Lighting the lamps</p>
+  <p class="by">An audiobook advent calendar by Cover to Cover</p>
+  <p id="loading-msg">Lighting the lamps</p>
   <div class="bar"><div id="bar"></div></div>
 </div>
 
 <header id="head">
   <h1>Advent Village 2026</h1>
+  <p class="by">An audiobook advent calendar by <a href="https://www.youtube.com/@C2CAudiobooks" target="_blank" rel="noopener">Cover to Cover</a></p>
   <p id="count"></p>
 </header>
 
@@ -37,11 +51,133 @@
   <p id="card-author"></p>
   <p id="card-length"></p>
   <a id="card-link" class="button" target="_blank" rel="noopener" hidden></a>
+  <div class="steps">
+    <button id="prev" type="button" aria-label="Previous day">‹</button>
+    <button id="next" type="button" aria-label="Next day">›</button>
+  </div>
 </section>
 
 <button id="back" type="button" hidden>Back to the village</button>
 
+<section id="xmas" hidden role="dialog" aria-modal="true" aria-labelledby="xmas-title">
+  <div class="xmas-panel">
+    <button id="xmas-x" type="button" aria-label="Close">×</button>
+    <div class="xmas-hero">
+      <svg class="xmas-art" viewBox="0 0 1000 560" aria-hidden="true">
+        <defs>
+          <radialGradient id="xGlow" cx=".5" cy=".46" r=".5"><stop offset="0" stop-color="#ffd98a" stop-opacity=".55"/><stop offset=".45" stop-color="#e0a02a" stop-opacity=".18"/><stop offset="1" stop-color="#e0a02a" stop-opacity="0"/></radialGradient>
+          <radialGradient id="bRed" cx=".32" cy=".28" r=".8"><stop offset="0" stop-color="#ffb4a8"/><stop offset=".4" stop-color="#e3242b"/><stop offset="1" stop-color="#55070c"/></radialGradient>
+          <radialGradient id="bGold" cx=".32" cy=".28" r=".8"><stop offset="0" stop-color="#fff7c4"/><stop offset=".4" stop-color="#e6ad34"/><stop offset="1" stop-color="#6a460a"/></radialGradient>
+          <radialGradient id="bBlue" cx=".32" cy=".28" r=".8"><stop offset="0" stop-color="#cfe4ff"/><stop offset=".4" stop-color="#2e74d6"/><stop offset="1" stop-color="#0c2a5c"/></radialGradient>
+          <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>
+          <linearGradient id="snowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d6ea"/></linearGradient>
+          <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffe58a"/><stop offset=".5" stop-color="#f2b93b"/><stop offset="1" stop-color="#c4861a"/></linearGradient>
+          <symbol id="xg" viewBox="0 0 100 100">
+            <rect x="6" y="36" width="88" height="64" rx="4" fill="currentColor"/><rect x="6" y="36" width="88" height="64" rx="4" fill="url(#shade)"/>
+            <rect x="0" y="24" width="100" height="18" rx="3" fill="currentColor"/><rect x="0" y="24" width="100" height="18" rx="3" fill="#000" opacity=".1"/><rect x="0" y="40" width="100" height="3" fill="#000" opacity=".18"/>
+            <rect x="43" y="24" width="14" height="76" fill="url(#ribbon)"/>
+            <path d="M50 26C36 0 8 6 22 21 29 28 43 27 50 26ZM50 26C64 0 92 6 78 21 71 28 57 27 50 26Z" fill="url(#ribbon)" stroke="#b07714" stroke-width="2"/>
+            <path d="M50 26 40 40M50 26 60 40" stroke="#c4861a" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="26" r="6" fill="#f2b93b" stroke="#b07714" stroke-width="2"/>
+          </symbol>
+          <symbol id="xt" viewBox="0 0 100 170">
+            <rect x="44" y="140" width="12" height="30" fill="#5b3a1e"/>
+            <path d="M50 0 84 52H16Z M50 30 92 98H8Z M50 70 99 146H1Z" fill="#17603a"/><path d="M50 0 84 52H50Z M50 30 92 98H50Z M50 70 99 146H50Z" fill="#0f4a2b"/>
+            <path d="M50 0 65 23C58 28 55 21 50 26 45 21 41 28 35 23Z M50 30 69 60C61 65 56 57 50 62 44 57 39 65 31 60Z M50 70 75 109C65 115 58 106 50 112 42 106 35 115 25 109Z" fill="url(#snowG)"/>
+            <g fill="#ffd66b"><circle cx="34" cy="80" r="3"/><circle cx="62" cy="88" r="3"/><circle cx="24" cy="128" r="3"/><circle cx="56" cy="132" r="3"/><circle cx="78" cy="124" r="3"/><circle cx="44" cy="48" r="2.5"/></g>
+            <g fill="#e3242b"><circle cx="48" cy="96" r="3"/><circle cx="70" cy="138" r="3"/><circle cx="36" cy="140" r="3"/></g>
+          </symbol>
+          <symbol id="xc" viewBox="0 0 60 170"><path d="M42 165V48A20 20 0 0 0 2 48" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M42 165V48A20 20 0 0 0 2 48" fill="none" stroke="#d81b23" stroke-width="14" stroke-dasharray="9 11"/><path d="M38 165V48" stroke="#fff" stroke-opacity=".5" stroke-width="3"/></symbol>
+          <symbol id="xs" viewBox="-10 -10 20 20"><path d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2Z" fill="#fff3b0"/><circle r="1.6" fill="#fff"/></symbol>
+          <symbol id="xf" viewBox="-12 -12 24 24"><g stroke="#f3e9dc" stroke-width="1.4" stroke-linecap="round" fill="none"><path id="xfa" d="M0-11V11M0-7-3-10M0-7 3-10M0 7-3 10M0 7 3 10"/><use href="#xfa" transform="rotate(60)"/><use href="#xfa" transform="rotate(120)"/></g></symbol>
+          <symbol id="xb" viewBox="-30 -46 60 76"><line x1="0" y1="-46" x2="0" y2="-34" stroke="#c9a24a" stroke-width="2"/><rect x="-7" y="-36" width="14" height="9" rx="2" fill="#d8b25a"/><circle r="28" style="fill: var(--b)"/><ellipse cx="-9" cy="-10" rx="7" ry="4" fill="#fff" opacity=".55" transform="rotate(-30 -9 -10)"/></symbol>
+        </defs>
+        <ellipse cx="500" cy="260" rx="520" ry="320" fill="url(#xGlow)"/>
+        <g class="rays" opacity=".35" stroke="#ffd98a" stroke-width="2" stroke-linecap="round">
+          <path d="M500 260 500 30M500 260 690 90M500 260 780 230M500 260 300 80M500 260 220 230M500 260 640 40M500 260 360 40"/>
+        </g>
+        <path d="M-20 560C120 470 300 452 500 462S880 470 1020 560Z" fill="url(#snowG)"/>
+        <use href="#xt" x="50" y="140" width="170" height="290"/><use href="#xt" x="-10" y="260" width="130" height="225"/><use href="#xt" x="170" y="300" width="90" height="155"/>
+        <use href="#xt" x="780" y="140" width="170" height="290"/><use href="#xt" x="880" y="260" width="130" height="225"/><use href="#xt" x="740" y="300" width="90" height="155"/>
+        <g class="sway"><use href="#xc" x="215" y="230" width="52" height="150"/></g>
+        <g transform="translate(1000 0) scale(-1 1)"><g class="sway"><use href="#xc" x="215" y="215" width="52" height="150"/></g></g>
+        <use href="#xg" x="380" y="0" width="130" height="130" color="#2f7de1" class="pop" style="--d:.45s"/>
+        <use href="#xg" x="500" y="30" width="110" height="105" color="#f1b4ad" class="pop" style="--d:.6s"/>
+        <g class="sway"><use href="#xb" x="560" y="0" width="80" height="100" style="--b: url(#bRed)"/></g>
+        <g class="sway" style="--s:3.1s"><use href="#xb" x="330" y="20" width="64" height="82" style="--b: url(#bGold)"/></g>
+        <g class="sway" style="--s:2.2s"><use href="#xb" x="670" y="10" width="56" height="72" style="--b: url(#bBlue)"/></g>
+        <circle cx="262" cy="320" r="44" fill="url(#bRed)" class="bob"/><circle cx="742" cy="300" r="42" fill="url(#bGold)" class="bob" style="--d:.7s"/>
+        <use href="#xg" x="290" y="392" width="140" height="140" color="#7b3fb4" class="pop" style="--d:.8s"/>
+        <use href="#xg" x="420" y="372" width="165" height="165" color="#1f8a4c" class="pop" style="--d:.95s"/>
+        <use href="#xg" x="575" y="388" width="150" height="150" color="#e0a92f" class="pop" style="--d:1.1s"/>
+        <use href="#xg" x="700" y="440" width="90" height="90" color="#d8262e" class="pop" style="--d:1.25s"/>
+        <circle cx="232" cy="508" r="38" fill="url(#bRed)"/><circle cx="805" cy="500" r="32" fill="url(#bBlue)"/><circle cx="268" cy="530" r="22" fill="url(#bGold)"/>
+        <g class="tw"><use href="#xs" x="140" y="110" width="30" height="30"/><use href="#xs" x="320" y="150" width="20" height="20" style="--t:.4s"/><use href="#xs" x="700" y="140" width="24" height="24" style="--t:.8s"/><use href="#xs" x="870" y="100" width="30" height="30" style="--t:.2s"/><use href="#xs" x="935" y="330" width="20" height="20" style="--t:1s"/><use href="#xs" x="55" y="200" width="18" height="18" style="--t:.6s"/><use href="#xs" x="660" y="250" width="16" height="16" style="--t:1.2s"/><use href="#xs" x="300" y="250" width="14" height="14" style="--t:.9s"/><use href="#xs" x="470" y="160" width="14" height="14" style="--t:.3s"/><use href="#xs" x="560" y="340" width="16" height="16" style="--t:.7s"/></g>
+        <g class="drift"><use href="#xf" x="230" y="70" width="40" height="40"/><use href="#xf" x="790" y="60" width="44" height="44"/><use href="#xf" x="830" y="470" width="38" height="38"/><use href="#xf" x="50" y="440" width="36" height="36"/><use href="#xf" x="450" y="250" width="22" height="22"/></g>
+      </svg><canvas id="confetti" aria-hidden="true"></canvas>
+      <h2 id="xmas-title">Merry Christmas!</h2>
+    </div>
+    <div class="xmas-msg">
+      <p class="kicker">25 December</p>
+      <p id="xmas-text">Thank you for joining me through all 24 doors and stories. I hope you had a warm December.</p>
+      <div class="xmas-actions">
+        <a class="button" href="https://www.youtube.com/@C2CAudiobooks" target="_blank" rel="noopener">Listen to the stories</a>
+        <button id="xmas-close" type="button">Back to the village</button>
+      </div>
+    </div>
+    <h3>All 24 stories</h3>
+    <ol id="xmas-list"></ol>
+  </div>
+</section>
+
+<aside id="credit" hidden aria-label="About this calendar">
+  <button id="credit-close" type="button" aria-label="Close">×</button>
+  <p>Made by <strong>Cover to Cover</strong>: classic stories read aloud, a new one every day of December.</p>
+  <a class="button" href="https://www.youtube.com/@C2CAudiobooks?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+</aside>
+
+<div id="consent" hidden role="dialog" aria-label="Cookie choice">
+  <p>We'd like to use Google Analytics cookies to count visits. Google receives your IP address, and the cookies last up to 13 months after your last visit. Nothing loads unless you accept.</p>
+  <div class="choices">
+    <button type="button" data-consent="denied">Reject</button>
+    <button type="button" data-consent="granted">Accept</button>
+  </div>
+</div>
+
+<footer id="foot">© 2026 Cover to Cover<span id="cookie-settings" hidden> · <button type="button">Cookie settings</button></span></footer>
+
 <noscript><p class="nojs">This page needs JavaScript to show the village.</p></noscript>
+<script>
+// Consent-gated Google Analytics: nothing from Google loads until the visitor clicks Accept (no Consent Mode pings).
+// Kept out of main.js so a WebGL or model failure cannot take the banner down with it.
+(() => {
+  const GA_ID = '';                                   // GA4 measurement ID, e.g. 'G-ABC123XYZ'. Empty: no banner, no analytics.
+  if (!GA_ID) return;
+  const KEY = 'advent-village-consent', banner = document.getElementById('consent'), settings = document.getElementById('cookie-settings');
+  const get = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
+  const set = (v) => { try { localStorage.setItem(KEY, v); } catch {} };
+  const load = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID, { cookie_expires: 34128000, allow_google_signals: false, allow_ad_personalization_signals: false });   // 13 months
+    const s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+  };
+  const clearGa = () => document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => n.startsWith('_ga')).forEach((n) => {
+    for (const d of ['', '; domain=' + location.hostname, '; domain=.' + location.hostname]) document.cookie = n + '=; Max-Age=0; path=/' + d;
+  });
+  const choose = (v) => {
+    const was = get(); set(v); banner.hidden = true;
+    if (v === 'granted' && was !== 'granted') load();
+    if (v === 'denied' && was === 'granted') { clearGa(); location.reload(); }   // withdrawal: drop the cookies and the loaded tag
+  };
+  banner.addEventListener('click', (e) => { const v = e.target.dataset && e.target.dataset.consent; if (v) choose(v); });
+  settings.hidden = false;
+  settings.querySelector('button').addEventListener('click', () => { banner.hidden = false; });
+  if (get() === 'granted') load(); else if (get() !== 'denied') banner.hidden = false;
+})();
+</script>
 <script type="module" src="main.js"></script>
 </body>
 </html>

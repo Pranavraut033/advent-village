@@ -11,3 +11,7 @@ From the repository root, run `python3 -m http.server`, then open `http://localh
 ## Add a reading
 
 Each book is an entry in `2026/data/books.json`. When a reading is public on YouTube, set its `video` field to the YouTube video id (the part after `v=` in the address). The card then links to that video. While `video` is `null`, the card links to the channel.
+
+## Analytics
+
+Google Analytics loads only after a visitor clicks Accept on the cookie banner. To switch it on, put the GA4 measurement ID (`G-…`) in `GA_ID` near the end of `2026/index.html`. While it is empty there is no banner and nothing from Google loads. To fetch the numbers, run `node tools/ga_report.mjs` (with no settings it prints the one-time setup steps). The service-account key stays outside the repo.

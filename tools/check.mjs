@@ -25,7 +25,7 @@ if (exists('2026/index.html')) {
   ok('importmap pins three@0.186.1', /"three"\s*:\s*"https:\/\/cdn\.jsdelivr\.net\/npm\/three@0\.186\.1\/build\/three\.module\.js"/.test(html));
   ok('importmap pins three/addons@0.186.1', /"three\/addons\/"\s*:\s*"https:\/\/cdn\.jsdelivr\.net\/npm\/three@0\.186\.1\/examples\/jsm\/"/.test(html));
   const hosts = [...(html + (exists('2026/main.js') ? read('2026/main.js') : '')).matchAll(/https?:\/\/([a-z0-9.-]+)/gi)].map((m) => m[1].toLowerCase());
-  const bad = [...new Set(hosts)].filter((h) => !['cdn.jsdelivr.net', 'www.youtube.com', 'youtube.com', 'youtu.be', 'www.w3.org'].includes(h));
+  const bad = [...new Set(hosts)].filter((h) => !['cdn.jsdelivr.net', 'www.youtube.com', 'youtube.com', 'youtu.be', 'www.w3.org', 'www.googletagmanager.com', 'pranavraut033.github.io'].includes(h));
   ok('only allowed hosts (jsdelivr, youtube)', bad.length === 0, bad.join(', '));
   ok('page has a title', /<title>[^<]{3,}<\/title>/.test(html));
   ok('page has a viewport meta', /name=["']viewport["']/.test(html));

@@ -47,6 +47,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 }
 #loading h1 { font-size: 1.9rem; color: var(--gold); }
 #loading p { margin: 0; color: var(--muted); }
+#loading p.by { color: var(--text); font-family: var(--serif); font-style: italic; }
 #loading.done { opacity: 0; pointer-events: none; }
 .bar {
   width: min(260px, 70vw);
@@ -72,11 +73,14 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 }
 #head h1 { font-size: 1.15rem; color: var(--gold); }
 #head p { margin: 2px 0 0; font-size: 0.85rem; color: var(--text); }
+#head p.by { color: var(--muted); font-family: var(--serif); font-style: italic; }
+#head a { pointer-events: auto; color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(242, 196, 109, 0.5); }
+#head a:hover, #head a:focus-visible { color: var(--gold); }
 
 #hint {
   position: fixed;
   left: 50%;
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 34px);
   transform: translateX(-50%);
   z-index: 2;
   margin: 0;
@@ -91,22 +95,36 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
   transition: opacity 0.4s ease;
 }
 #hint.gone { opacity: 0; }
+#hint { width: max-content; }                     /* left:50% + translate would otherwise cap it at half the screen */
+@media (max-width: 520px) { body:has(#back:not([hidden])) #head .by { display: none; } }   /* Back button sits there on phones */
 
 #card {
   position: fixed;
   left: 50%;
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 70px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 34px);
   transform: translateX(-50%);
   z-index: 3;
   width: min(380px, calc(100vw - 24px));
-  padding: 18px 20px 20px;
+  padding: 18px 44px 20px;
   border: 1px solid rgba(242, 196, 109, 0.45);
   border-radius: 14px;
   background: rgba(14, 23, 48, 0.92);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-#card[hidden], #back[hidden], #card-link[hidden] { display: none; }
+#card[hidden], #back[hidden], #card-link[hidden], #credit[hidden], #consent[hidden], #card button[hidden] { display: none; }
+#card .steps { position: absolute; inset: 50% 6px auto; display: flex; justify-content: space-between; transform: translateY(-50%); pointer-events: none; }
+#card .steps button {
+  pointer-events: auto;
+  width: 34px; height: 34px;
+  border: 0; border-radius: 50%;
+  background: transparent;
+  color: var(--gold);
+  font: 1.6rem/1 var(--serif);
+  cursor: pointer;
+}
+#card .steps button:hover, #card .steps button:focus-visible { background: rgba(242, 196, 109, 0.15); }
+#next { margin-left: auto; }
 #card p { margin: 6px 0 0; color: var(--muted); font-size: 0.9rem; }
 #card .kicker {
   margin: 0;
@@ -146,6 +164,146 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
   cursor: pointer;
 }
 #back:hover, #back:focus-visible { background: rgba(242, 196, 109, 0.15); }
+
+#credit, #consent {
+  position: fixed;
+  z-index: 5;
+  padding: 16px 18px;
+  border: 1px solid rgba(242, 196, 109, 0.45);
+  border-radius: 14px;
+  background: rgba(14, 23, 48, 0.95);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+}
+#credit p, #consent p { margin: 0; color: var(--text); line-height: 1.4; }
+#credit {
+  left: 14px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 34px);
+  width: min(320px, calc(100vw - 28px));
+  padding-right: 34px;
+}
+#credit strong { color: var(--gold-soft); }
+#credit .button { margin-top: 12px; }
+#credit-close {
+  position: absolute; top: 6px; right: 6px;
+  width: 30px; height: 30px;
+  border: 0; border-radius: 50%;
+  background: transparent; color: var(--muted);
+  font-size: 1.3rem; cursor: pointer;
+}
+#credit-close:hover, #credit-close:focus-visible { color: var(--text); background: rgba(255, 255, 255, 0.08); }
+#consent {
+  left: 50%;
+  top: calc(env(safe-area-inset-top, 0px) + 84px);    /* below the header, clear of the book card at the bottom */
+  transform: translateX(-50%);
+  z-index: 6;
+  width: min(440px, calc(100vw - 24px));
+}
+#consent .choices { display: flex; gap: 10px; margin-top: 12px; }
+#consent .choices button {                 /* Reject and Accept look the same on purpose */
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gold);
+  font: 600 0.95rem var(--sans);
+  cursor: pointer;
+}
+#consent .choices button:hover, #consent .choices button:focus-visible { background: rgba(242, 196, 109, 0.15); }
+
+#foot {
+  position: fixed;
+  left: 0; right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 6px);
+  z-index: 2;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-shadow: 0 1px 4px rgba(5, 9, 22, 0.9);
+}
+#foot button { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+#foot button:hover, #foot button:focus-visible { color: var(--text); }
+
+#confetti { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#xmas {
+  position: fixed; inset: 0; z-index: 9;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  background: rgba(5, 9, 22, 0.7);
+  animation: xmas-fade 0.5s ease both;
+}
+#xmas[hidden] { display: none; }
+.xmas-panel {
+  position: relative;
+  width: min(980px, 100%); max-height: calc(100vh - 32px); overflow-y: auto;
+  padding: 0 clamp(16px, 4vw, 40px) 32px;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 50% 35%, #16342a, #0c1712 55%, #070b0c);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(242, 196, 109, 0.25);
+  text-align: center;
+  animation: xmas-pop 0.8s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+#xmas-x {
+  position: absolute; top: 12px; right: 12px; z-index: 3;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+#xmas-x:hover, #xmas-x:focus-visible { background: rgba(255, 255, 255, 0.25); }
+.xmas-hero { position: relative; margin: 0 auto; width: 100%; aspect-ratio: 1000 / 560; }
+.xmas-art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.xmas-art .sway { transform-box: fill-box; transform-origin: 50% 0; animation: xmas-sway var(--s, 2.6s) ease-in-out infinite alternate; }
+.xmas-art .bob { transform-box: fill-box; transform-origin: center; animation: xmas-bob 3s ease-in-out var(--d, 0s) infinite alternate; }
+.xmas-art .pop { transform-box: fill-box; transform-origin: 50% 100%; animation: xmas-gift 0.7s cubic-bezier(0.2, 1.6, 0.4, 1) var(--d, 0s) both; }
+.xmas-art .tw use { transform-box: fill-box; transform-origin: center; animation: xmas-tw 1.4s ease-in-out var(--t, 0s) infinite alternate; }
+.xmas-art .rays { transform-origin: 500px 260px; animation: xmas-spin 40s linear infinite; }
+.xmas-art .drift use { transform-box: fill-box; transform-origin: center; animation: xmas-drift 6s ease-in-out infinite alternate; }
+#xmas h2 {
+  position: absolute; left: 50%; top: 44%; width: max-content; max-width: 100%; transform: translate(-50%, -50%) rotate(-3deg); pointer-events: none; text-align: center;
+  margin: 0; padding: 0 4%;
+  font: 900 clamp(1.8rem, 9.5vw, 6rem)/1 "Cooper Black", "Bookman Old Style", Georgia, serif;
+}
+#xmas h2 .word { display: block; white-space: nowrap; filter: drop-shadow(0 0.05em 0 #b3121b) drop-shadow(0 0.05em 0 #8c0d14) drop-shadow(0 0.08em 0.08em rgba(0, 0, 0, 0.6)); }
+#xmas h2 .word span {
+  position: relative; display: inline-block; white-space: pre;
+  background: linear-gradient(180deg, #fff3b0 0%, #f6c84c 45%, #d9921c 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: 0.03em #b3121b;
+  animation: xmas-letter 0.7s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+#xmas h2 .word span::before {                                /* a cap of snow on every letter */
+  content: ''; position: absolute; left: 14%; right: 14%; top: 0.1em; height: 0.14em; z-index: 1;
+  border-radius: 50% 50% 45% 45% / 70% 70% 30% 30%; background: #fff; box-shadow: 0 0.02em 0.03em rgba(0, 0, 0, 0.25);
+}
+#xmas .kicker { margin: 4px 0 0; color: var(--gold); font-family: var(--serif); letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.9rem; }
+#xmas p#xmas-text { margin: 8px auto 0; max-width: 34em; color: var(--text); font-size: 1.1rem; line-height: 1.55; animation: xmas-up 0.8s ease 1.2s both; }
+#xmas .xmas-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; margin-top: 20px; animation: xmas-up 0.8s ease 1.4s both; }
+#xmas .xmas-actions .button { margin: 0; padding: 12px 22px; font-size: 1rem; }
+#xmas-close { padding: 11px 20px; border: 1px solid rgba(242, 196, 109, 0.6); border-radius: 999px; background: none; color: var(--gold); font: 600 0.95rem var(--sans); cursor: pointer; }
+#xmas-close:hover, #xmas-close:focus-visible { background: rgba(242, 196, 109, 0.15); }
+#xmas h3 { margin: 34px 0 12px; font-family: var(--serif); font-weight: 600; color: var(--gold); font-size: 1.15rem; }
+#xmas-list { margin: 0 auto; padding: 0; list-style: none; columns: 2 220px; column-gap: 28px; text-align: left; counter-reset: d; }
+#xmas-list li { break-inside: avoid; padding: 5px 0; color: var(--muted); font-size: 0.9rem; counter-increment: d; }
+#xmas-list li::before { content: counter(d) "."; display: inline-block; width: 1.9em; color: var(--gold); font-family: var(--serif); }
+#xmas-list a { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(242, 196, 109, 0.35); }
+#xmas-list a:hover, #xmas-list a:focus-visible { color: var(--gold-soft); }
+#xmas.calm h2 { font-size: clamp(1.7rem, 8vw, 4.8rem); }
+#xmas.calm .xmas-msg {                                             /* after Christmas: the message sits on a frosted card over the scene */
+  position: relative; z-index: 2; width: min(560px, 100%); margin: -90px auto 0; padding: 20px 22px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 18px;
+  background: rgba(14, 23, 48, 0.45); -webkit-backdrop-filter: blur(12px) saturate(1.2); backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+@keyframes xmas-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes xmas-pop { from { opacity: 0; transform: scale(0.7) translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes xmas-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes xmas-letter { from { opacity: 0; transform: translateY(0.6em) scale(0.5) rotate(-10deg); } to { opacity: 1; transform: none; } }
+@keyframes xmas-sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+@keyframes xmas-gift { from { opacity: 0; transform: translateY(40px) scale(0.6); } to { opacity: 1; transform: none; } }
+@keyframes xmas-bob { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+@keyframes xmas-spin { to { transform: rotate(360deg); } }
+@keyframes xmas-drift { from { transform: translateY(-6px) rotate(-15deg); } to { transform: translateY(6px) rotate(15deg); } }
+@keyframes xmas-tw { from { opacity: 0.25; transform: scale(0.6); } to { opacity: 1; transform: scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { #xmas, #xmas *, #xmas h2 span { animation: none !important; } }
 
 .nojs { position: fixed; z-index: 20; top: 40%; width: 100%; text-align: center; }
 
