@@ -135,6 +135,23 @@
   <a class="button" href="https://www.youtube.com/@C2CAudiobooks?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
 </aside>
 
+<section id="credits" hidden role="dialog" aria-modal="true" aria-labelledby="credits-title">
+  <div class="credits-panel">
+    <button id="credits-close" type="button" aria-label="Close">×</button>
+    <h2 id="credits-title">Credits</h2>
+    <p><strong>Advent Village 2026</strong> is an audiobook advent calendar for the Cover to Cover YouTube channel: one classic book a day from 1 to 24 December 2026.</p>
+    <dl>
+      <dt>Made by</dt><dd>Pranav Raut, with Claude (Anthropic) writing the code and building the 3D pipeline.</dd>
+      <dt>Readings</dt><dd>Public-domain books read for Cover to Cover. The voices are generated with OmniVoice and Qwen voice clones, designed for each book.</dd>
+      <dt>Houses and tree</dt><dd>Pictures made in Google Flow (Nano Banana), turned into 3D models with Hyper3D Rodin (Gen-2.5 High).</dd>
+      <dt>Props</dt><dd>Lamps, fences, presents, snowmen, pines and the island rock, made in Meshy.</dd>
+      <dt>Blender</dt><dd>Used to measure and compress the models and to repaint the sign lettering.</dd>
+      <dt>Village layout</dt><dd>Placed by a small Python script; the paths, gardens and extra trees are laid out in the page itself.</dd>
+      <dt>Site</dt><dd>Built with three.js and hosted on GitHub Pages.</dd>
+    </dl>
+  </div>
+</section>
+
 <div id="consent" hidden role="dialog" aria-label="Cookie choice">
   <p>We'd like to use Google Analytics cookies to count visits. Google receives your IP address, and the cookies last up to 13 months after your last visit. Nothing loads unless you accept.</p>
   <div class="choices">
@@ -143,12 +160,19 @@
   </div>
 </div>
 
-<footer id="foot">© 2026 Cover to Cover<span id="cookie-settings" hidden> · <button type="button">Cookie settings</button></span></footer>
+<footer id="foot">© 2026 Cover to Cover · <button id="credits-open" type="button">Credits</button><span id="cookie-settings" hidden> · <button type="button">Cookie settings</button></span></footer>
 
 <noscript><p class="nojs">This page needs JavaScript to show the village.</p></noscript>
 <script>
 // Consent-gated Google Analytics: nothing from Google loads until the visitor clicks Accept (no Consent Mode pings).
 // Kept out of main.js so a WebGL or model failure cannot take the banner down with it.
+(() => {                                            // credits panel: plain DOM, works even if the 3D village fails
+  const c = document.getElementById('credits'), close = () => { c.hidden = true; };
+  document.getElementById('credits-open').addEventListener('click', () => { c.hidden = false; document.getElementById('credits-close').focus(); });
+  document.getElementById('credits-close').addEventListener('click', close);
+  c.addEventListener('click', (e) => { if (e.target === c) close(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
 (() => {
   const GA_ID = '';                                   // GA4 measurement ID, e.g. 'G-ABC123XYZ'. Empty: no banner, no analytics.
   if (!GA_ID) return;
