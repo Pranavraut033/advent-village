@@ -222,6 +222,8 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
   font-size: 0.75rem;
   text-shadow: 0 1px 4px rgba(5, 9, 22, 0.9);
 }
+#foot a, #consent p a { color: inherit; }
+@media (max-width: 480px) { #foot { white-space: nowrap; } #foot .copy { display: none; } }   /* links stay on one line, clear of the hint */
 #foot button { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
 #foot button:hover, #foot button:focus-visible { color: var(--text); }
 

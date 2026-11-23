@@ -21,8 +21,8 @@
 <script type="importmap">
 {
   "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
   }
 }
 </script>
@@ -153,14 +153,14 @@
 </section>
 
 <div id="consent" hidden role="dialog" aria-label="Cookie choice">
-  <p>We'd like to use Google Analytics cookies to count visits. Google receives your IP address, and the cookies last up to 13 months after your last visit. Nothing loads unless you accept.</p>
+  <p>We'd like to use Google Analytics cookies to count visits. Google receives your IP address, and the cookies last up to 400 days (about 13 months) after your last visit. Nothing loads unless you accept. <a href="privacy.html">Privacy</a></p>
   <div class="choices">
     <button type="button" data-consent="denied">Reject</button>
     <button type="button" data-consent="granted">Accept</button>
   </div>
 </div>
 
-<footer id="foot">© 2026 Cover to Cover · <button id="credits-open" type="button">Credits</button><span id="cookie-settings" hidden> · <button type="button">Cookie settings</button></span></footer>
+<footer id="foot"><span class="copy">© 2026 Cover to Cover · </span><button id="credits-open" type="button">Credits</button> · <a href="privacy.html">Privacy</a> · <a href="impressum.html">Impressum</a><span id="cookie-settings" hidden> · <button type="button">Cookie settings</button></span></footer>
 
 <noscript><p class="nojs">This page needs JavaScript to show the village.</p></noscript>
 <script>
