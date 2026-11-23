@@ -22,11 +22,12 @@ if (exists('index.html')) ok('root redirects to 2026/', /2026\//.test(read('inde
 // pinned three.js, only allowed hosts
 if (exists('2026/index.html')) {
   const html = read('2026/index.html');
-  ok('importmap pins three@0.186.1', /"three"\s*:\s*"https:\/\/cdn\.jsdelivr\.net\/npm\/three@0\.186\.1\/build\/three\.module\.js"/.test(html));
-  ok('importmap pins three/addons@0.186.1', /"three\/addons\/"\s*:\s*"https:\/\/cdn\.jsdelivr\.net\/npm\/three@0\.186\.1\/examples\/jsm\/"/.test(html));
+  ok('importmap uses the self-hosted three.js', /"three"\s*:\s*"\.\/vendor\/three\/build\/three\.module\.js"/.test(html) && exists('2026/vendor/three/build/three.module.js'));
+  ok('importmap uses the self-hosted addons', /"three\/addons\/"\s*:\s*"\.\/vendor\/three\/examples\/jsm\/"/.test(html));
+  ok('vendored three is 0.186.1', /REVISION = '186'/.test(read('2026/vendor/three/build/three.core.js')));
   const hosts = [...(html + (exists('2026/main.js') ? read('2026/main.js') : '')).matchAll(/https?:\/\/([a-z0-9.-]+)/gi)].map((m) => m[1].toLowerCase());
-  const bad = [...new Set(hosts)].filter((h) => !['cdn.jsdelivr.net', 'www.youtube.com', 'youtube.com', 'youtu.be', 'www.w3.org', 'www.googletagmanager.com', 'pranavraut033.github.io'].includes(h));
-  ok('only allowed hosts (jsdelivr, youtube)', bad.length === 0, bad.join(', '));
+  const bad = [...new Set(hosts)].filter((h) => !['www.youtube.com', 'youtube.com', 'youtu.be', 'www.w3.org', 'www.googletagmanager.com', 'pranavraut033.github.io'].includes(h));
+  ok('only allowed hosts (youtube, google tag)', bad.length === 0, bad.join(', '));
   ok('page has a title', /<title>[^<]{3,}<\/title>/.test(html));
   ok('page has a viewport meta', /name=["']viewport["']/.test(html));
 }

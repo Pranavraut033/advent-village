@@ -38,7 +38,7 @@ async function main() {
   const manager = new THREE.LoadingManager();
   manager.onProgress = (url, loaded, total) => { $('bar').style.width = Math.round(100 * loaded / total) + '%'; };
   const draco = new DRACOLoader(manager);
-  draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/libs/draco/gltf/');
+  draco.setDecoderPath('./vendor/three/examples/jsm/libs/draco/gltf/');   // self-hosted three@0.186.1 (npm), so no third-party host before consent
   const loader = new GLTFLoader(manager);
   loader.setDRACOLoader(draco);
 

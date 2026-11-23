@@ -2,7 +2,7 @@
 
 This is the Christmas advent calendar of the Cover to Cover YouTube channel. It is a snowy floating island with 24 houses, one for each day of December, and each house stands for one book. Visitors drag to look around the village and tap a house to fly to it and see its book card.
 
-The doors follow the visitor's local date. In December 2026, the houses up to today's date are lit and their cards show the book. Later houses stay dark and the card only says when the door opens. The site is static: plain HTML, CSS and JavaScript modules, with three.js loaded from cdn.jsdelivr.net. There is no build step.
+The doors follow the visitor's local date. In December 2026, the houses up to today's date are lit and their cards show the book. Later houses stay dark and the card only says when the door opens. The site is static: plain HTML, CSS and JavaScript modules, with three.js 0.186.1 copied from npm into `2026/vendor/three/`, so no third-party host loads before cookie consent. There is no build step.
 
 ## Preview locally
 
