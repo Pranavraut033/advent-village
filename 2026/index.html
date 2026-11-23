@@ -174,7 +174,7 @@
   addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
 (() => {
-  const GA_ID = '';                                   // GA4 measurement ID, e.g. 'G-ABC123XYZ'. Empty: no banner, no analytics.
+  const GA_ID = 'G-74D9CEFNT1';                                   // GA4 measurement ID, e.g. 'G-ABC123XYZ'. Empty: no banner, no analytics.
   if (!GA_ID) return;
   const KEY = 'advent-village-consent', banner = document.getElementById('consent'), settings = document.getElementById('cookie-settings');
   const get = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
